@@ -6,22 +6,17 @@ function ObjectHook()
     {
         setEmp(
             {
-                
+                ...emp,
+                [e.target.name]:e.target.value
             }
         )
     }
-
-    // changeHandler=(e)=>{
-    //     this.setState(
-    //         {[e.target.name]:e.target.value}
-    //     )
-    // }
-
     return(
         <div>
-            firstName:<input type="text" value={emp.firstName} onChange={e=>setEmp({firstName:e.target.value})}/>
+            First-Name:<input type="text" name="firstName" value={emp.firstName} onChange={changeHandler}/>
             <br/>
-            lastName: <input type="text" value={emp.lastName} onChange={e=>setEmp({lastName:e.target.value})}/>
+            Last-Name: <input type="text" name="lastName" value={emp.lastName} onChange={changeHandler}/>
+                                                                                {/* onChange={e=>setEmp({...emp,lastName:e.target.value})}/> */}
             <br/>
             thanks for being a partner {emp.firstName} and {emp.lastName}
         </div>
