@@ -4,11 +4,13 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios'
+import UserPage from './UserPage';
 
 class Login extends React.Component {
 constructor(props){
   super(props);
   this.state={
+  id:-1,
   name:'',
   password:'',
   }
@@ -24,12 +26,17 @@ constructor(props){
     axios.post(apiBaseUrl+"auth",payload)
     .then(response=>{
         if(response.data!=-1)
-        {console.log(response)}
+        {console.log(response)
+        this.setState({id:response.data})
+        }
     })
 }
 render() {
     return (
       <div>
+        {
+        this.state.id==-1?
+        (<div>
         <MuiThemeProvider>
           <div>
           <AppBar
@@ -51,6 +58,12 @@ render() {
              <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
          </div>
          </MuiThemeProvider>
+         </div>
+        ):
+        (
+          <UserPage id={this.state.id}/>
+        )
+        }
       </div>
     );
   }
