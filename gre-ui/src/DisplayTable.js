@@ -6,20 +6,7 @@ class DisplayTable extends React.Component {
     constructor(props)
     {
         super(props)
-        this.State={
-            x:this.props.data,
-            f:true
-        }
     }
-   componentDidUpdate()
-   {
-    var url="http://localhost:8080/user/"+this.props.userid
-    axios.get(url)
-    .then(response=>
-    {
-        this.setState({x:response.data})
-    })
-  }  
   
     handleClick=(id)=>
     {
@@ -41,18 +28,16 @@ class DisplayTable extends React.Component {
         {
             axios.post(apiBaseUrl+"delWord",payload)
             .then(response=>{
-                if(response.data!=-1)
-                {console.log(response)
-                  axios.get("http://localhost:8080/words")
-                  .then(response=>
-                    {
-                       this.setState({x:response.data})
-                      })
+                if(response.data!=1)
+                {
+                  alert("error ocurred")
                 }
-            })  
+                }
+            )
+            }  
             
         }
-     }
+     
     render() {
         var ButtonColor="info";
         var text="add";
@@ -77,11 +62,10 @@ class DisplayTable extends React.Component {
              this.props.data.map(
               (abc,index) => 
               <tr key={abc.id}>  
-                <td>
-              <tr key={abc.i<li class="list-group-item list-group-item-warning" align="left">{abc.id}</li></td>
+                <td><li class="list-group-item list-group-item-warning" align="left">{abc.id}</li></td>
                 <td><li class="list-group-item list-group-item-info" align="left">{abc.word}</li></td>
                 <td><li class="list-group-item list-group-item-success" align="left">{abc.meaning}</li></td>
-                <td><Button color={ButtonColor} onClick={()=>this.handleClick(abc.id) }>{text}</Button>
+                <td><Button color={ButtonColor}  onClick={()=>this.handleClick(abc.id) }>{text}</Button>
                 </td>
               </tr>
               )

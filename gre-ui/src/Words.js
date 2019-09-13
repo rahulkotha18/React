@@ -12,7 +12,7 @@ class Words extends Component {
   {
       super(props)
       this.state={
-          learnt:true,
+          learnt:1,
           all:[],
           custom:[],
           type:''
