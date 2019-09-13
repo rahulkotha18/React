@@ -1,6 +1,5 @@
 import React from 'react'
 import { Table,Button } from 'reactstrap';
-import { Navbar,Spinner,NavbarBrand } from 'reactstrap';
 import axios from 'axios'
 class DisplayTable extends React.Component {
     constructor(props)
@@ -23,6 +22,7 @@ class DisplayTable extends React.Component {
                 {console.log(response)
                 }
             })
+            this.props.onAdd(id)
         }
         else
         {
@@ -34,8 +34,8 @@ class DisplayTable extends React.Component {
                 }
                 }
             )
-            }  
-            
+            this.props.onDelete(id)
+          }  
         }
      
     render() {
@@ -62,9 +62,9 @@ class DisplayTable extends React.Component {
              this.props.data.map(
               (abc,index) => 
               <tr key={abc.id}>  
-                <td><li class="list-group-item list-group-item-warning" align="left">{abc.id}</li></td>
-                <td><li class="list-group-item list-group-item-info" align="left">{abc.word}</li></td>
-                <td><li class="list-group-item list-group-item-success" align="left">{abc.meaning}</li></td>
+                <td><li className="list-group-item list-group-item-warning" align="left">{abc.id}</li></td>
+                <td><li className="list-group-item list-group-item-info" align="left">{abc.word}</li></td>
+                <td><li className="list-group-item list-group-item-success" align="left">{abc.meaning}</li></td>
                 <td><Button color={ButtonColor}  onClick={()=>this.handleClick(abc.id) }>{text}</Button>
                 </td>
               </tr>
