@@ -17,13 +17,10 @@ class DisplayTable extends React.Component {
     axios.get(url)
     .then(response=>
     {
-        console.log("ra")
         this.setState({x:response.data})
-        
     })
   }  
   
-
     handleClick=(id)=>
     {
         var apiBaseUrl="http://localhost:8080/";
@@ -46,9 +43,14 @@ class DisplayTable extends React.Component {
             .then(response=>{
                 if(response.data!=-1)
                 {console.log(response)
+                  axios.get("http://localhost:8080/words")
+                  .then(response=>
+                    {
+                       this.setState({x:response.data})
+                      })
                 }
             })  
-            this.setState({f:true}) 
+            
         }
      }
     render() {
@@ -61,20 +63,6 @@ class DisplayTable extends React.Component {
         }
       return (
         <div>
-          <div>
-            < Navbar color="grey" dark expand="md">
-              <NavbarBrand text-color="white">
-                <Spinner type="grow" color="primary" />
-                <Spinner type="grow" color="secondary" />
-                <Spinner type="grow" color="success" />
-                <Spinner type="grow" color="danger" />
-                <Spinner type="grow" color="warning" />
-                <Spinner type="grow" color="info" />
-                <Spinner type="grow" color="dark" />
-              </NavbarBrand>
-            </Navbar>
-          </div>
-  
         <Table striped>
           <thead>
             <tr>
@@ -89,7 +77,8 @@ class DisplayTable extends React.Component {
              this.props.data.map(
               (abc,index) => 
               <tr key={abc.id}>  
-                <td><li class="list-group-item list-group-item-warning" align="left">{abc.id}</li></td>
+                <td>
+              <tr key={abc.i<li class="list-group-item list-group-item-warning" align="left">{abc.id}</li></td>
                 <td><li class="list-group-item list-group-item-info" align="left">{abc.word}</li></td>
                 <td><li class="list-group-item list-group-item-success" align="left">{abc.meaning}</li></td>
                 <td><Button color={ButtonColor} onClick={()=>this.handleClick(abc.id) }>{text}</Button>

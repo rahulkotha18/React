@@ -18,6 +18,7 @@ class Words extends Component {
           type:''
       }
   }
+  
   componentDidMount()
   {
       console.log(this.props.id)
@@ -35,7 +36,15 @@ class Words extends Component {
           this.setState({custom:response.data})    
         })
    }
-  
+   componentDidUpdate()
+   {
+       var url="http://localhost:8080/user/"+this.props.id
+         axios.get(url)
+         .then(response=>
+         {
+           this.setState({custom:response.data})    
+         })
+    }
     render() {
         return (
             <div>

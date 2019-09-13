@@ -4,7 +4,7 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios'
-import UserPage from './UserPage';
+import Words from './Words';
 
 class Login extends React.Component {
 constructor(props){
@@ -61,7 +61,7 @@ render() {
          </div>
         ):
         (
-          <UserPage id={this.state.id}/>
+          <Words id={this.state.id}/>
         )
         }
       </div>
