@@ -35,10 +35,6 @@ class Words extends Component {
         })
         console.log("words mount mtd executed")
    }
-   componentDidUpdate()
-   {
-
-   }
    handleDelete(id)
    {
      const myFil = (word)=>word.id!=id

@@ -5,11 +5,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios'
 import Words from './Words';
+import Register from './Register';
 
 class Login extends React.Component {
 constructor(props){
   super(props);
   this.state={
+  reg:1,
   id:-1,
   name:'',
   password:'',
@@ -31,41 +33,61 @@ constructor(props){
         }
     })
 }
+
+handleClick2(event){
+if (this.state.reg==1)
+this.setState({reg:0})
+else
+this.setState({reg:1})
+}
+
 render() {
-    return (
-      <div>
-        {
-        this.state.id==-1?
-        (<div>
-        <MuiThemeProvider>
-          <div>
-          <AppBar
-             title="Login"
+  var login =(<div>
+    <MuiThemeProvider>
+      <div >
+      <AppBar
+         title="Login" 
+         onLeftIconButtonClick={()=>alert("left")}
+       />
+       <div>
+
+       </div>
+       <TextField
+         hintText="Enter your Username"
+         floatingLabelText="Username"
+         onChange = {(event,newValue) => this.setState({name:newValue})}
+         />
+       <br/>
+         <TextField
+           type="password"
+           hintText="Enter your Password"
+           floatingLabelText="Password"
+           onChange = {(event,newValue) => this.setState({password:newValue})}
            />
-           <TextField
-             hintText="Enter your Username"
-             floatingLabelText="Username"
-             onChange = {(event,newValue) => this.setState({name:newValue})}
-             />
-           <br/>
-             <TextField
-               type="password"
-               hintText="Enter your Password"
-               floatingLabelText="Password"
-               onChange = {(event,newValue) => this.setState({password:newValue})}
-               />
-             <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-         </div>
-         </MuiThemeProvider>
-         </div>
-        ):
-        (
+         <br/>
+         <RaisedButton label="log in" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+         <br/>
+         <h6>Not Registed ? Register now</h6>
+         <RaisedButton label="Register" primary={true} style={style} onClick={(event) => this.handleClick2(event)}/>
+     </div>
+     </MuiThemeProvider>
+     </div>
+    )
+    if(this.state.id==-1)
+    {
+      if(this.state.reg==0)
+        return(<div><Register handle={(event)=>this.handleClick2(event)} /></div>)
+      else
+        return (<div>{login}</div>)
+    }
+    else
+    {
+      return(
+        <div>
           <Words id={this.state.id}/>
-        )
-        }
-      </div>
-    );
+        </div>
+      )
+    }
   }
 }
 const style = {
