@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import UserPage from './UserPage';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { Paper } from '@material-ui/core';
 class Login extends React.Component {
     constructor(props)
         {
@@ -42,6 +43,7 @@ class Login extends React.Component {
             
         }
          var login=(<div style={style}>
+             <Paper style={{marginBottom:10,marginTop:20,marginLeft:-30,marginRight:-30}}>
              <AccountCircleIcon/>
          <h2>Login</h2>
          <div style={style}>
@@ -59,16 +61,17 @@ class Login extends React.Component {
          label="password"
          onChange = {(event) => this.handleClick(event)}
          /> <br/>
-         </div>
          <Button variant="contained" color="primary" onClick={()=>this.handleSubmit()}>
              submit  </Button>
+             </div>
+             </Paper>
      </div>)
         if(this.state.id==-1)
         {
             
             return(
                 <div>
-                {login}
+                    {login}
                 </div>
             );       
         }
