@@ -8,7 +8,9 @@ function Words(props) {
   let [learnt, setLearnt] = useState(1);
   let [all, setAll] = useState([]);
   let [custom, setCustom] = useState([]);
-
+  const handleLog=()=>{
+    window.location.reload(true);
+  }
   useEffect(() => {
     console.log(props.id);
     axios.get("http://localhost:8080/words").then(response => {
@@ -56,6 +58,14 @@ function Words(props) {
           color="primary"
         >
           Learnt words{" "}
+        </Button>
+        <Button
+          style={{ margin:15 }}
+          onClick={()=>handleLog()}
+          variant="contained"
+          color="secondary"
+        >
+          Log out{" "}
         </Button>
       </div>
       {learnt ? (
