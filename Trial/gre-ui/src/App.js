@@ -11,11 +11,11 @@ import Login from "./Login";
 //     );
 //   }
 // }
-function App(){
-  return(
+function App() {
+  return (
     <div className="App">
-         <Login />
-       </div>
-  )
+      <Login />
+    </div>
+  );
 }
 export default App;
