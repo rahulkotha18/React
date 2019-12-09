@@ -20,6 +20,4 @@ describe('Header Component', () => {
         expect(wrapper.length).toBe(1);
     });
 
-});Down added #17883
-Closed
-1 of 1 task complete
+});

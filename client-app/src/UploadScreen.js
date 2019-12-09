@@ -4,6 +4,7 @@ import { tsConstructorType } from '@babel/types';
 import {Spinner,Navbar,NavbarBrand} from 'reactstrap'
 import { Button,Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
 class UploadScreen extends Component {
     constructor(props)
     {
@@ -85,6 +86,13 @@ class UploadScreen extends Component {
                     Show words      </Button>
                 <Button onClick={this.changeState} variant="contained" color="primary">
                     learnt words      </Button>
+                    <Button
+        variant="contained"
+        color="secondary"
+        startIcon={<DeleteIcon />}
+      >
+        Delete
+      </Button>
                 </div>
                 {
                     this.state.learnt ?

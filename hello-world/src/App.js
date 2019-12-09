@@ -8,10 +8,12 @@ import NameList from './components/NameList'
 import Stylesheet from './components/Stylesheet'
 import ParentComponent from './components/ParentComponent'
 import RefsDemo from './components/RefsDemo'
+import Hooks from './Hooks';
 function App() {
   return (
     <div className="App">
-       {/* <Greet name="rahul" hero="batman">
+      <Hooks/>
+    {/* <Greet name="rahul" hero="batman">
         <p>This is from brokyln</p>
         </Greet>
       <Greet name="scientist" hero="iron man">
@@ -23,9 +25,7 @@ function App() {
       <Parent/>
       <NameList/>
       <Stylesheet/> */}
-      <RefsDemo/>
     </div>
   );
 }
-
 export default App;

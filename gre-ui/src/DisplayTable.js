@@ -1,7 +1,9 @@
 import React from "react";
-import { Table, Button } from "reactstrap";
+import { Table ,Button} from "reactstrap";
 import axios from "axios";
-
+//import { Button } from '@material-ui/core';
+//import SaveIcon from '@material-ui/icons/Save';
+//import DeleteIcon from '@material-ui/icons/Delete';
 function DisplayTable(props) {
   const handleClick = id => {
     let apiBaseUrl = "http://localhost:8080/";
@@ -27,9 +29,11 @@ function DisplayTable(props) {
   };
   let ButtonColor = "info";
   let text = "add";
+//  let icons=<SaveIcon />;
   if (props.type === "custom") {
     ButtonColor = "danger";
     text = "remove";
+    //icons=<DeleteIcon />
   }
   return (
     <div>
@@ -73,6 +77,14 @@ function DisplayTable(props) {
                 <Button color={ButtonColor} onClick={() => handleClick(abc.id)}>
                   {text}
                 </Button>
+                {/* <Button
+                variant="contained"
+                color={ButtonColor}
+                startIcon={icons}
+                onClick={()=>handleClick(abc.id)}
+                > */}
+                {/* {text}
+                </Button> */}
               </td>
             </tr>
           ))}
